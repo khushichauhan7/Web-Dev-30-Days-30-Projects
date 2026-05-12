@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="calc" id="calc">
+            <div class="top-bar">
+                <span class="label">Calculator</span>
+                <button class="toggle" onclick="toggleMode()" id="modeBtn">☀️ Day</button>
+            </div>
+            <div class="display">
+                <div class="expr" id="expr"></div>
+                <div class="result" id="result">0</div>
+            </div>
+            <div class="grid">
+                <button class="btn-clear" onclick="clearAll()">AC</button>
+                <button class="btn-clear" onclick="clearEntry()">CE</button>
+                <button class="btn-clear" onclick="percent()">%</button>
+                <button class="btn-op" onclick="pressOp('/')">÷</button>
+
+                <button class="btn-num" onclick="pressNum('7')">7</button>
+                <button class="btn-num" onclick="pressNum('8')">8</button>
+                <button class="btn-num" onclick="pressNum('9')">9</button>
+                <button class="btn-op" onclick="pressOp('×')">×</button>
+
+                <button class="btn-num" onclick="pressNum('4')">4</button>
+                <button class="btn-num" onclick="pressNum('5')">5</button>
+                <button class="btn-num" onclick="pressNum('6')">6</button>
+                <button class="btn-op" onclick="pressOp('-')">−</button>
+
+                <button class="btn-num" onclick="pressNum('1')">1</button>
+                <button class="btn-num" onclick="pressNum('2')">2</button>
+                <button class="btn-num" onclick="pressNum('3')">3</button>
+                <button class="btn-op" onclick="pressOp('+')">+</button>
+
+                <button class="btn-num btn-zero" onclick="pressNum('0')">0</button>
+                <button class="btn-num" onclick="pressDot()">.</button>
+                <button class="btn-eq" onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
