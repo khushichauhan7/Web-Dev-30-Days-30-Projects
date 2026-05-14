@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown Timer</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>Countdown Timer</h1>
+  <div class="timer-wrapper">
+    <div class="unit">
+      <p id="days">00</p>
+      <span class="label">Days</span>
+    </div>
+
+    <div class="separator">:</div>
+
+    <div class="unit">
+      <p id="hours">00</p>
+      <span class="label">Hours</span>
+    </div>
+
+    <div class="separator">:</div>
+
+    <div class="unit">
+      <p id="minutes">00</p>
+      <span class="label">Minutes</span>
+    </div>
+
+    <div class="separator">:</div>
+
+    <div class="unit">
+      <p id="seconds">00</p>
+      <span class="label">Seconds</span>
+    </div>
+  </div>
+
+  <!-- DATE SELECTION -->
+  <div class="set-row">
+    Select Target Date:
+    <input type="date" id="targetDate">
+  </div>
+
+  <div class="status" id="statusText">
+    Waiting to start...
+  </div>
+
+  <div class="controls">
+    <button onclick="startTimer()">Start</button>
+    <button onclick="pauseTimer()">Pause</button>
+    <button onclick="resetTimer()">Reset</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
