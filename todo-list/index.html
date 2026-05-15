@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Todo List</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Background layers -->
+  <div class="bg-photo"></div>
+  <div class="bg-overlay"></div>
+  <div class="bg-mesh"></div>
+
+  <!-- Floating nature accents -->
+  <div class="leaf leaf-1">🌹</div>
+  <div class="leaf leaf-2">🥀</div>
+  <div class="leaf leaf-3">🌸</div>
+  <div class="leaf leaf-4">✦</div>
+
+  <main class="app-container">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-badge">TO DO App</div>
+      <h1 class="app-title">Today's<br/><em>Task</em></h1>
+      <p class="app-subtitle">One task at a time</p>
+
+      <!-- Photo strip -->
+      <div class="photo-strip">
+        <img src="https://images.unsplash.com/photo-1455734729978-db1ae4f687fc?w=140&h=90&fit=crop" alt="pink-sky" />
+        <img src="https://images.unsplash.com/photo-1519335337423-a3357c2cd12e?w=140&h=90&fit=crop" alt="nature" />
+        <img src="https://images.unsplash.com/photo-1543362906-acfc16c67564?w=140&h=90&fit=crop" alt="aesthetic" />
+      </div>
+    </header>
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-number" id="total-count">0</span>
+        <span class="stat-label">Total</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number" id="done-count">0</span>
+        <span class="stat-label">Done</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number" id="left-count">0</span>
+        <span class="stat-label">Left</span>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="input-area">
+      <div class="input-wrap">
+        <span class="input-icon">✦</span>
+        <input id="todo-input" type="text" placeholder="What will you do today?" autocomplete="off"/>
+        <button id="add-btn">Add</button>
+      </div>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="filter-tabs">
+      <button class="tab active" data-filter="all">All</button>
+      <button class="tab" data-filter="active">Active</button>
+      <button class="tab" data-filter="done">Done</button>
+    </div>
+
+    <!-- Todo list -->
+    <ul id="todo-list"></ul>
+
+    <!-- Empty state -->
+    <div class="empty-state" id="empty-state">
+      <p>Your canvas is clear.<br/>Add your first task above.</p>
+    </div>
+
+    <footer class="app-footer">
+      Double-click any task to edit &nbsp;·&nbsp;
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
