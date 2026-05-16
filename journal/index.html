@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vintage Mood Journal ✦</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Caveat:wght@400;600;700&family=Libre+Baskerville:ital@1&family=DM+Serif+Display:ital@0;1&family=Crimson+Pro:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="particles-container"></div>
+<canvas id="rain-canvas"></canvas>
+
+<div id="toast">✨ Saved to your journal!</div>
+<div id="splash">
+  <div class="splash-title">Vintage<br><em>Mood Journal</em></div>
+  <div class="splash-sub">✦ a space to feel everything ✦</div>
+  <button class="enter-btn" onclick="enterApp()">Open Journal →</button>
+</div>
+
+<div id="app">
+  <button id="menu-toggle" onclick="toggleSidebar()">☰</button>
+  <nav id="sidebar">
+    <div class="sidebar-logo">
+      <h1>Vintage<br><em>Mood Journal</em></h1>
+      <span>✦ a space to feel everything</span>
+    </div>
+    <div class="nav-section">
+      <h3>Navigate</h3>
+      <button class="nav-btn active" onclick="showView('calendar-view', this)"></span> Calendar</button>
+      <button class="nav-btn" onclick="showView('entry-view', this)"></span> New Entry</button>
+      <button class="nav-btn" onclick="showView('entries-view', this)"></span> My Journal</button>
+    </div>
+    <div class="nav-section">
+      <h3>Vibes</h3>
+      <button class="nav-btn" onclick="toggleRain()"><span id="rain-label">Rain On</span></button>
+      <button class="nav-btn" onclick="toggleParticles()"><span id="particle-label">Sparkles On</span></button>
+    </div>
+    <div class="mood-legend">
+      <h3>Mood Key</h3>
+      <div class="mood-dot-row"><div class="mood-dot" style="background:#f4c842"></div> happy</div>
+      <div class="mood-dot-row"><div class="mood-dot" style="background:#8aa5b5"></div> tired</div>
+      <div class="mood-dot-row"><div class="mood-dot" style="background:#c8a0d8"></div> chaotic</div>
+      <div class="mood-dot-row"><div class="mood-dot" style="background:#e8a0a0"></div> romanticizing life</div>
+      <div class="mood-dot-row"><div class="mood-dot" style="background:#7a9478"></div> engineering cooked me</div>
+    </div>
+  </nav>
+
+  <div id="main">
+
+    <!-- CALENDAR VIEW -->
+    <div id="calendar-view" class="view active">
+      <div class="page-header">
+        <h2><em>Memory</em> Calendar</h2>
+      </div>
+      <div class="cal-month-nav">
+        <button onclick="changeMonth(-1)">← Prev</button>
+        <span id="cal-month-label"></span>
+        <button onclick="changeMonth(1)">Next →</button>
+      </div>
+      <div class="cal-grid" id="cal-grid">
+      </div>
+    </div>
+
+    <!-- NEW ENTRY VIEW -->
+    <div id="entry-view" class="view">
+      <div class="page-header">
+        <h2>New <em>Entry</em></h2>
+      </div>
+      <div class="entry-canvas">
+        <div class="theme-selector">
+          <button class="theme-btn vintage active" onclick="setTheme('vintage', this)">🍂 Vintage</button>
+          <button class="theme-btn notebook" onclick="setTheme('notebook', this)">📓 Notebook</button>
+          <button class="theme-btn dark-academia" onclick="setTheme('dark-academia', this)">🕯️ Dark Academia</button>
+          <button class="theme-btn pastel" onclick="setTheme('pastel', this)">🌸 Pastel</button>
+          <button class="theme-btn polaroid" onclick="setTheme('polaroid', this)">📷 Polaroid</button>
+        </div>
+
+        <div class="journal-paper paper-vintage corner-fold" id="journal-paper">
+          <div class="entry-header-row">
+            <div class="entry-date-block">
+              <div class="entry-date-display" id="display-date"></div>
+              <div class="entry-day-display" id="display-day"></div>
+            </div>
+            <div>
+              <div style="font-family:'Caveat',cursive;font-size:0.8rem;opacity:0.6;margin-bottom:6px;letter-spacing:0.1em;">TODAY'S MOOD ✦</div>
+              <div class="mood-picker-row" id="mood-picker"></div>
+            </div>
+          </div>
+          <input class="quote-input" id="quote-input" placeholder="✦ add a quote, a lyric, a feeling... ✦" maxlength="120">
+          <div class="paper-divider"><span>❧</span></div>
+          <textarea class="journal-textarea" id="journal-text" placeholder="dear journal,
+
+today was...
+
+(write anything — your thoughts, observations, moments worth keeping)"></textarea>
+
+          <div class="paper-divider" style="margin-top:20px"><span>✿</span></div>
+          <div class="photo-zone" id="photo-zone">
+            <div class="upload-btn-area" onclick="document.getElementById('file-input').click()">
+              <span class="plus">+</span>
+              <span>add photo</span>
+            </div>
+          </div>
+          <div class="song-row">
+            <span class="song-icon">🎵</span>
+            <input class="song-input" id="song-input" placeholder="song you're vibing to...">
+          </div>
+        </div>
+
+        <div class="sticker-panel">
+          <h3>✦ DRAG STICKERS ONTO YOUR PAGE ✦</h3>
+          <div class="sticker-categories" id="sticker-categories"></div>
+          <div class="sticker-grid" id="sticker-grid"></div>
+        </div>
+
+        <div class="save-row">
+          <button class="btn-primary" onclick="saveEntry()"> Save Entry</button>
+          <button class="btn-secondary" onclick="clearEntry()">↺ Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="entries-view" class="view">
+      <div class="page-header">
+        <h2> My <em>Journal</em></h2>
+      </div>
+      <div class="stats-banner" id="stats-banner"></div>
+      <div class="entries-grid" id="entries-grid"></div>
+      <div id="no-entries" style="display:none;font-family:'Caveat',cursive;color:var(--warm-tan);font-size:1.3rem;text-align:center;padding:60px;opacity:0.6;">
+        No entries yet ✦ Start writing your story 🌿
+      </div>
+    </div>
+
+    <div id="detail-view" class="view">
+      <button class="back-btn" onclick="showView('entries-view', null)">← Back to Journal</button>
+      <div id="detail-content"></div>
+    </div>
+
+  </div>
+</div>
+
+<input type="file" id="file-input" accept="image/*" multiple onchange="handleFileUpload(event)">
+
+<script src="script.js"></script>
+</body>
+</html>
