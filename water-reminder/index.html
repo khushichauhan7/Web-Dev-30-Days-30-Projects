@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hydration Timer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+  <div class="card-header">
+    <div class="title">Hydration Timer</div>
+    <div class="subtitle">stay healthy · drink water every 10 min</div>
+  </div>
+
+  <div class="glass-wrap">
+    <div class="water-glass">
+      <svg viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 8 L14 72 Q14 76 18 76 L46 76 Q50 76 50 72 L54 8 Z" fill="rgba(91,200,245,0.08)" stroke="rgba(91,200,245,0.5)" stroke-width="1.5"/>
+        <clipPath id="glassClip">
+          <path d="M10 8 L14 72 Q14 76 18 76 L46 76 Q50 76 50 72 L54 8 Z"/>
+        </clipPath>
+        <rect class="water-fill" x="8" y="28" width="48" height="52" fill="rgba(91,200,245,0.55)" clip-path="url(#glassClip)"/>
+        <line x1="19" y1="14" x2="17" y2="68" stroke="rgba(255,255,255,0.18)" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="timer-display">
+    <div class="timer-num" id="timer">10:00</div>
+    <div class="timer-label">until next reminder</div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-bar" id="progress"></div>
+  </div>
+
+  <div class="count-box">
+    <div>
+      <div class="count-label">Glasses today</div>
+      <div class="count-num" id="count">0</div>
+    </div>
+    <div class="droplets" id="drops"></div>
+  </div>
+
+  <div class="btns">
+    <button class="btn btn-primary" id="pauseBtn" onclick="togglePause()">Pause</button>
+    <button class="btn btn-outline" onclick="resetTimer()">Reset</button>
+  </div>
+  <button class="btn btn-log" onclick="logGlass()">+ Log a glass of water</button>
+
+  <div class="status active" id="status">Timer active!</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
